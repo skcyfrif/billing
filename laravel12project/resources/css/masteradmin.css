@@ -1,0 +1,36 @@
+/* resources/css/custom.css */
+
+body {
+    background-color: #f8fafc; /* soft gray */
+
+}
+
+
+.sidebar_bg {
+    background-color: #1e0b50;
+}
+
+.view_button {
+    background-color: #0073ff;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.edit_button {
+    background-color: lab(70.26% 1.16 73.23);
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.delete_button {
+    background-color: #ff2b2b;
+    color: white;
+    padding: 6px;
+    border-radius: 5px;
+    text-decoration: none;
+
+}
