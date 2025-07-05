@@ -18,6 +18,7 @@
                 <th class="p-2 text-left">Name</th>
                 <th class="p-2 text-left">Email</th>
                 <th class="p-2 text-left">Role</th>
+                <th class="p-2 text-left">Created By</th>
                 <th class="p-2 text-left">Actions</th>
             </tr>
         </thead>
@@ -27,8 +28,8 @@
                     <td class="p-2">{{ $controlpanel->name }}</td>
                     <td class="p-2">{{ $controlpanel->email }}</td>
                     <td class="p-2">{{ $controlpanel->role }}</td>
+                    <td class="p-2">{{ $controlpanel->created_by }}</td>
                     <td class="p-2 space-x-2">
-                        {{-- <a href="{{ route('user.show', $controlpanel->id) }}" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm">View</a> --}}
                         <a href="{{ route('user.show', $controlpanel->id) }}" class="view_button">View</a>
                         <a href="{{ route('user.edit', $controlpanel->id) }}" class="edit_button">Edit</a>
                         <form action="{{ route('user.delete', $controlpanel->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure to delete?')">

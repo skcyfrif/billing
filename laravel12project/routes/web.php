@@ -72,13 +72,13 @@ Route::middleware(['auth', 'controlpaneladmin'])->group(function () {
 ///////////////////////////////  Admin Routes ///////////////////////////////
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    // Route::get('/controlpaneladmin/user', [ControlPanelAdminController::class, 'UserIndex'])->name('user.index');
-    // Route::get('/controlpaneladmin/user/create', [ControlPanelAdminController::class, 'UserCreate'])->name('user.create');
-    // Route::post('/controlpaneladmin/user', [ControlPanelAdminController::class, 'UserStore'])->name('user.store');
-    // Route::get('/controlpaneladmin/user/{id}', [ControlPanelAdminController::class, 'UserShow'])->name('user.show');
-    // Route::get('/controlpaneladmin/user/{id}/edit', [ControlPanelAdminController::class, 'UserEdit'])->name('user.edit');
-    // Route::put('/controlpaneladmin/user/{id}', [ControlPanelAdminController::class, 'UserUpdate'])->name('user.update');
-    // Route::delete('/controlpaneladmin/user/{id}', [ControlPanelAdminController::class, 'UserDelete'])->name('user.delete');
+    Route::get('/admin/user', [AdminController::class, 'UserIndex'])->name('user.index');
+    Route::get('/admin/user/create', [AdminController::class, 'UserCreate'])->name('user.create');
+    Route::post('/admin/user', [AdminController::class, 'UserStore'])->name('user.store');
+    Route::get('/admin/user/{id}', [AdminController::class, 'UserShow'])->name('user.show');
+    Route::get('/admin/user/{id}/edit', [AdminController::class, 'UserEdit'])->name('user.edit');
+    Route::put('/admin/user/{id}', [AdminController::class, 'UserUpdate'])->name('user.update');
+    Route::delete('/admin/user/{id}', [AdminController::class, 'UserDelete'])->name('user.delete');
 
     });
 

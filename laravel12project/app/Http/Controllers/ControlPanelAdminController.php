@@ -20,7 +20,7 @@ class ControlPanelAdminController extends Controller
 
 
 
-    // List all Users
+    // List all Admins
     public function AdminIndex()
     {
         $controlpanels = User::where('role', 'admin')->get();

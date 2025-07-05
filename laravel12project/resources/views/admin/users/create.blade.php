@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2 class="text-xl font-bold mb-4">Add  User</h2>
+    <h2 class="text-xl font-bold mb-4">Add User</h2>
     <a href="{{ url()->previous() }}" class="inline-block mb-4 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
         ← Back
     </a>
@@ -24,6 +24,11 @@
             <select name="role" class="w-full border p-2 rounded" required>
                 <option value="user">User</option>
             </select>
+        </div>
+        <div class="mb-4">
+            <label class="block mb-1">Created By</label>
+            <input type="text" name="created_by" class="w-full border p-2 rounded bg-gray-100"
+                value="{{ Auth::user()->name }}" readonly>
         </div>
 
         <div class="mb-4">

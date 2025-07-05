@@ -23,7 +23,7 @@
         <div class="mb-4">
             <label class="block mb-1">Role</label>
             <select name="role" class="w-full border p-2 rounded" required>
-                <option value="controlpaneladmin" {{ $controlpanel->role === 'user' ? 'selected' : '' }}>User</option>
+                <option value="user" {{ $controlpanel->role === 'user' ? 'selected' : '' }}>User</option>
             </select>
         </div>
 
