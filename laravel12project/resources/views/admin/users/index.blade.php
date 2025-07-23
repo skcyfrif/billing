@@ -28,7 +28,8 @@
                     <td class="p-2">{{ $controlpanel->name }}</td>
                     <td class="p-2">{{ $controlpanel->email }}</td>
                     <td class="p-2">{{ $controlpanel->role }}</td>
-                    <td class="p-2">{{ $controlpanel->created_by }}</td>
+                    {{-- <td class="p-2">{{ $controlpanel->creator->created_by }}</td> --}}
+                    <td class="p-2">{{ $controlpanel->creator->name }}</td>
                     <td class="p-2 space-x-2">
                         <a href="{{ route('user.show', $controlpanel->id) }}" class="view_button">View</a>
                         <a href="{{ route('user.edit', $controlpanel->id) }}" class="edit_button">Edit</a>

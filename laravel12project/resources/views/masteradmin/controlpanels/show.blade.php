@@ -12,6 +12,7 @@
                 <th class="p-2 text-left">Name</th>
                 <th class="p-2 text-left">Email</th>
                 <th class="p-2 text-left">Role</th>
+                <th class="p-2 text-left">Created By</th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,8 @@
                 <td class="p-2">{{ $controlpanel->name }}</td>
                 <td class="p-2">{{ $controlpanel->email }}</td>
                 <td class="p-2">{{ $controlpanel->role }}</td>
+                <td class="p-2">{{ $controlpanel->creator->name }}</td>
+
             </tr>
         </tbody>
     </table>

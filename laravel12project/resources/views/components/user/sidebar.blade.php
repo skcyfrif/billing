@@ -7,7 +7,7 @@
             {{-- <li class="mb-2"><a href="{{ route('controlpanel.dashboard') }}" class="hover:text-yellow-300">Dashboard</a></li> --}}
             <li class="mb-2"><a href="#" class="hover:text-yellow-300">Dashboard</a></li>
             {{-- <li class="mb-2"><a href="{{ route('cpadmin.index') }}" class="hover:text-yellow-300">Manage ControlPanelAdmin</a></li> --}}
-            <li class="mb-2"><a href="#" class="hover:text-yellow-300">Manage ControlPanelAdmin</a></li>
+            {{-- <li class="mb-2"><a href="#" class="hover:text-yellow-300">Manage ControlPanelAdmin</a></li> --}}
             <li class="mb-2"><a href="#" class="hover:text-yellow-300">My Tasks</a></li>
         </ul>
     </nav>

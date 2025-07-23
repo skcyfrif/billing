@@ -14,18 +14,48 @@ class MasterAdminController extends Controller
     //
 
 
-    public function showRegisterForm()
-{
-    return view('masteradmin.register');
-}
+public function showRegisterForm()
+    {
+        return view('masteradmin.register');
+    }
+
+// public function register(Request $request)
+//     {
+//         $request->validate([
+//             'name' => 'required|string|max:255',
+//             'email' => 'required|email|unique:users,email',
+//             'password' => 'required|confirmed|min:6',
+//             'role' => 'required|in:masteradmin', // restrict to masteradmin only
+//         ]);
+
+//         $user = User::create([
+//             'name' => $request->name,
+//             'email' => $request->email,
+//             'role' => $request->role,
+//             'password' => Hash::make($request->password),
+//         ]);
+
+//         Auth::login($user);
+
+//         return redirect('/masteradmin/dashboard');
+//     }
+
+
 
 public function register(Request $request)
 {
+    // Check if a masteradmin already exists
+    $existingMasterAdmin = User::where('role', 'masteradmin')->first();
+
+    if ($existingMasterAdmin) {
+        return back()->withErrors(['error' => 'Only one MasterAdmin can be registered.']);
+    }
+
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|confirmed|min:6',
-        'role' => 'required|in:masteradmin', // restrict to masteradmin only
+        'role' => 'required|in:masteradmin',
     ]);
 
     $user = User::create([
@@ -40,10 +70,21 @@ public function register(Request $request)
     return redirect('/masteradmin/dashboard');
 }
 
-public function dashboard()
+
+// public function dashboard()
+//     {
+//         // return view('masteradmin.dashboard');
+//         $controlpanelCount = User::where('role', 'controlpanel')->count();
+
+//         return view('masteradmin.dashboard', compact('controlpanelCount'));
+//     }
+
+
+    public function dashboard()
 {
-    // return view('masteradmin.dashboard');
-    $controlpanelCount = User::where('role', 'controlpanel')->count();
+    $controlpanelCount = User::where('role', 'controlpanel')
+                        ->where('created_by', auth()->id())
+                        ->count();
 
     return view('masteradmin.dashboard', compact('controlpanelCount'));
 }
@@ -55,8 +96,13 @@ public function dashboard()
     // List all controlpanel users
     public function controlpanelIndex()
     {
-        $controlpanels = User::where('role', 'controlpanel')->get();
+
+        $controlpanels = User::where('role', 'controlpanel')
+                            ->where('created_by', auth()->user()->id) // Filter by logged-in admin
+                            ->get();
+
         return view('masteradmin.controlpanels.index', compact('controlpanels'));
+
     }
 
     // Show add controlpanel form
@@ -81,6 +127,8 @@ public function dashboard()
         'name' => $request->name,
         'email' => $request->email,
         'role' => $request->role,
+        'created_by' => auth()->id(),
+        // 'created_by' => auth()->user()->name, // Store the creator's name
         'password' => Hash::make($request->password),
     ]);
 

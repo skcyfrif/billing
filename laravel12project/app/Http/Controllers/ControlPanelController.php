@@ -10,12 +10,20 @@ use App\Models\User;
 
 class ControlPanelController extends Controller
 {
-    //
+
+
 
     public function dashboard()
-    {
-        return view('controlpanel.dashboard');
-    }
+{
+    $controlpaneladminCount = User::where('role', 'controlpaneladmin')
+                        ->where('created_by', auth()->id())
+                        ->count();
+
+    return view('controlpanel.dashboard', compact('controlpaneladminCount'));
+}
+
+
+
 
 
     // === ControlPanel Admin Management ===
@@ -23,7 +31,12 @@ class ControlPanelController extends Controller
     // List all controlpanel Admins
     public function cpadminIndex()
     {
-        $controlpanels = User::where('role', 'controlpaneladmin')->get();
+
+
+        $controlpanels = User::where('role', 'controlpaneladmin')
+                            ->where('created_by', auth()->user()->id) // Filter by logged-in admin
+                            ->get();
+
         return view('controlpanel.controlpaneladmin.index', compact('controlpanels'));
 
     }
@@ -50,6 +63,7 @@ class ControlPanelController extends Controller
         'name' => $request->name,
         'email' => $request->email,
         'role' => $request->role,
+        'created_by' => auth()->id(),
         'password' => Hash::make($request->password),
     ]);
 

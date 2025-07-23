@@ -23,7 +23,11 @@ class ControlPanelAdminController extends Controller
     // List all Admins
     public function AdminIndex()
     {
-        $controlpanels = User::where('role', 'admin')->get();
+
+        $controlpanels = User::where('role', 'admin')
+                            ->where('created_by', auth()->user()->id) // Filter by logged-in admin
+                            ->get();
+
         return view('controlpaneladmin.admin.index', compact('controlpanels'));
 
     }
@@ -50,6 +54,7 @@ class ControlPanelAdminController extends Controller
         'name' => $request->name,
         'email' => $request->email,
         'role' => $request->role,
+        'created_by' => auth()->id(),
         'password' => Hash::make($request->password),
     ]);
 

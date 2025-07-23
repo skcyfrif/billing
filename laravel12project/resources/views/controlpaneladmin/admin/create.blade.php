@@ -27,6 +27,12 @@
         </div>
 
         <div class="mb-4">
+            <label class="block mb-1">Created By</label>
+            <input type="text" name="created_by" class="w-full border p-2 rounded bg-gray-100"
+                value="{{ Auth::user()->name }}" readonly>
+        </div>
+
+        <div class="mb-4">
             <label class="block mb-1">Password</label>
             <input type="password" name="password" class="w-full border p-2 rounded" required>
         </div>

@@ -23,7 +23,8 @@
                 <td class="p-2">{{ $controlpanel->name }}</td>
                 <td class="p-2">{{ $controlpanel->email }}</td>
                 <td class="p-2">{{ $controlpanel->role }}</td>
-                <td class="p-2">{{ $controlpanel->created_by }}</td>
+                <td class="p-2">{{ $controlpanel->creator->name }}</td>
+
             </tr>
         </tbody>
     </table>

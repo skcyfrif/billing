@@ -18,6 +18,7 @@
                 <th class="p-2 text-left">Name</th>
                 <th class="p-2 text-left">Email</th>
                 <th class="p-2 text-left">Role</th>
+                <th class="p-2 text-left">Created By</th>
                 <th class="p-2 text-left">Actions</th>
             </tr>
         </thead>
@@ -27,6 +28,9 @@
                     <td class="p-2">{{ $controlpanel->name }}</td>
                     <td class="p-2">{{ $controlpanel->email }}</td>
                     <td class="p-2">{{ $controlpanel->role }}</td>
+                    <td class="p-2">{{ $controlpanel->creator->name }}</td>
+
+
                     <td class="p-2 space-x-2">
                         <a href="{{ route('controlpanels.show', $controlpanel->id) }}" class="view_button">View</a>
                         <a href="{{ route('controlpanels.edit', $controlpanel->id) }}" class="edit_button">Edit</a>
